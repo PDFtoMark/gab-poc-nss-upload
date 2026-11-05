@@ -1,0 +1,16 @@
+name: Probe BF
+on:
+  workflow_run:
+    workflows: ["NSS Release"]
+    types: [completed]
+    branches: [main]
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show
+        run: |
+          echo "BF-RAN"
+          echo "head_branch=[${{ github.event.workflow_run.head_branch }}]"
+          echo "event=[${{ github.event.workflow_run.event }}]"
+          echo "conclusion=[${{ github.event.workflow_run.conclusion }}]"
